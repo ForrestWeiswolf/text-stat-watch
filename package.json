@@ -4,6 +4,10 @@
   "main": "index.js",
   "repository": "https://github.com/ForrestWeiswolf/text-stat-watch",
   "author": "Forrest Wolf",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/jest": "^29.2.4",
     "jest": "^29.3.1",
