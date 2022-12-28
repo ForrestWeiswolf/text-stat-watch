@@ -1,4 +1,4 @@
-import { countInstances } from '../src'
+import { countInstances } from '../src/countInstances'
 
 describe('countInstances', () => {
   it('returns an empty object when passed an empty array', () => {
