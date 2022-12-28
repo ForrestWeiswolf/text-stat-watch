@@ -21,5 +21,13 @@ describe('countInstances', () => {
         '/a/g': 5, '/\\d+/g': 1, '/\\t/g': 0
       })
     })
+
+    it('treats regexes as if they have the /g flag', () => {
+      const patterns = [/a/]
+
+      expect(countInstances(patterns, 'aa')).toEqual({
+        '/a/': 2
+      })
+    })
   })
 })
