@@ -21,14 +21,14 @@ describe('text-stat-watch', () => {
     process.argv = 'node index.js foo.txt f'.split(' ')
     textStatWatch()
 
-    expect(console.log).toBeCalledWith("1")
+    expect(console.log).toBeCalledWith("/f/: 1")
   })
 
   it('outputs the number of matches of a more complicated regex passed as the second command line argument', () => {
     process.argv = 'node index.js foo.txt b\\w+'.split(' ')
     textStatWatch()
 
-    expect(console.log).toBeCalledWith("2")
+    expect(console.log).toBeCalledWith("/b\\w+/: 2")
   })
 
   describe('validation', () => {

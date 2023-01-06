@@ -11,5 +11,5 @@ export default function textStatWatch() {
   const instanceCounts = countInstances([regex], text)
   const count = instanceCounts[regex.toString()]
 
-  console.log(String(count))
+  console.log(`/${regex.source}/: ${count}`)
 }
