@@ -7,9 +7,10 @@ export default function textStatWatch() {
   }
 
   const text = readFileSync(process.argv[2]).toString()
-  const regex = new RegExp(process.argv[3])
-  const instanceCounts = countInstances([regex], text)
-  const count = instanceCounts[regex.toString()]
+  const regexes = [...process.argv].slice(3).map(expression => new RegExp(expression))
+  const instanceCounts = countInstances(regexes, text)
 
-  console.log(`/${regex.source}/: ${count}`)
+  Object.entries(instanceCounts).forEach(([regex, count]) => {
+    console.log(`${regex}: ${count}`)
+  })
 }

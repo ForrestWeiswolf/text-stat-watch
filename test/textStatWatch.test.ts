@@ -8,6 +8,8 @@ describe('text-stat-watch', () => {
   beforeEach(() => {
     const readFileSyncMock = fs.readFileSync as jest.Mock
     readFileSyncMock.mockReturnValue('foo bar baz')
+    const consoleLog = console.log as jest.Mock
+    consoleLog.mockReset()
   })
 
   it('reads the file passed as the first argument', () => {
@@ -29,6 +31,14 @@ describe('text-stat-watch', () => {
     textStatWatch()
 
     expect(console.log).toBeCalledWith("/b\\w+/: 2")
+  })
+
+  it('outputs the number of matches of multiple regexes passed as command line arguments', () => {
+    process.argv = 'node index.js foo.txt f b\\w+'.split(' ')
+    textStatWatch()
+
+    expect(console.log).toBeCalledWith("/b\\w+/: 2")
+    expect(console.log).toBeCalledWith("/f/: 1")
   })
 
   describe('validation', () => {
