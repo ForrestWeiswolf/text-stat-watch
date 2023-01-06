@@ -1,3 +1,7 @@
-import {readFileSync} from 'fs'
+import { readFileSync } from 'fs'
 
-readFileSync(process.argv[2])
+export default function textStatWatch() {
+  readFileSync(process.argv[2])
+}
+
+textStatWatch()
