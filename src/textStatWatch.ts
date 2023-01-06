@@ -11,5 +11,5 @@ export default function textStatWatch() {
   const instanceCounts = countInstances([regex], text)
   const count = instanceCounts[regex.toString()]
 
-  process.stdout.write(String(count))
+  console.log(String(count))
 }

@@ -2,7 +2,7 @@ import fs from 'fs'
 import textStatWatch from '../src/textStatWatch'
 
 jest.mock('fs')
-jest.spyOn(process.stdout, 'write')
+jest.spyOn(console, 'log')
 
 describe('text-stat-watch', () => {
   beforeEach(() => {
@@ -21,14 +21,14 @@ describe('text-stat-watch', () => {
     process.argv = 'node index.js foo.txt f'.split(' ')
     textStatWatch()
 
-    expect(process.stdout.write).toBeCalledWith("1")
+    expect(console.log).toBeCalledWith("1")
   })
 
   it('outputs the number of matches of a more complicated regex passed as the second command line argument', () => {
     process.argv = 'node index.js foo.txt b\\w+'.split(' ')
     textStatWatch()
 
-    expect(process.stdout.write).toBeCalledWith("2")
+    expect(console.log).toBeCalledWith("2")
   })
 
   describe('validation', () => {
