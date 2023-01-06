@@ -1,5 +1,5 @@
 import fs from 'fs'
-import textStatWatch from '../src/index'
+import textStatWatch from '../src/textStatWatch'
 
 jest.mock('fs')
 jest.spyOn(process.stdout, 'write')
