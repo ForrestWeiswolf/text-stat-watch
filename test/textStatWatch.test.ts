@@ -5,7 +5,7 @@ jest.mock('fs')
 jest.spyOn(console, 'log')
 
 describe('text-stat-watch', () => {
-  let simulateFileChange = () => {}
+  let simulateFileChange = () => { }
   const readFileSyncMock = fs.readFileSync as jest.Mock
   const watchMock = fs.watch as jest.Mock
   const consoleLogMock = console.log as jest.Mock
@@ -50,7 +50,7 @@ describe('text-stat-watch', () => {
   })
 
   describe('when the file is changed', () => {
-    it('prints updated results', () => {
+    it('prints updated results after a separator', () => {
       process.argv = 'node index.js foo.txt f'.split(' ')
       textStatWatch()
 
@@ -59,7 +59,8 @@ describe('text-stat-watch', () => {
       readFileSyncMock.mockReturnValue('foo foo')
       simulateFileChange()
 
-      expect(console.log).toBeCalledWith("/f/: 2")
+      expect(console.log).toBeCalledWith('')
+      expect(console.log).toBeCalledWith('/f/: 2')
 
     })
   })
